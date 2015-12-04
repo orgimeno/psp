@@ -18,8 +18,12 @@ public class Semaforo {
      */
     public static void main(String[] args) throws InterruptedException {
         Semaphore sem= new Semaphore(1);
-        Thread hilo = new Thread(new Consulta(sem));
+        Thread hilo = new Thread(new Consulta(sem, "Paciente 1"));
+        Thread hilo2 = new Thread(new Consulta(sem, "Paciente 2"));
+        Thread hilo3 = new Thread(new Consulta(sem, "Paciente 3"));
         hilo.start();
+        hilo2.start();
+        hilo3.start();
     }
     
 }

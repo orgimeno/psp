@@ -13,14 +13,29 @@ import java.util.concurrent.Semaphore;
  */
 public class Consulta extends Thread{
     Semaphore semaphore;
+    String paciente="";
 
-    public Consulta(Semaphore semaforo) {
+    public Consulta(Semaphore semaforo, String pacient) {
         this.semaphore= semaforo;
+        this.paciente=pacient;
     }
     
     @Override
 	public void run(){
-        System.out.println("que es esta");
+            
+                try{
+                    System.out.println("Hay "+semaphore.availablePermits()+ " sitios libres");
+                    System.out.println("Entra en el vestuario el "+paciente);
+                    semaphore.acquire();
+                    System.out.println("Quedan "+semaphore.availablePermits()+ " sitios libres");
+                    
+                }catch(InterruptedException e){
+                    System.out.println(e);
+                }
+                System.out.println(paciente+" se está cambiando");
+                semaphore.release();
+                System.out.println("Quedan "+semaphore.availablePermits()+ " sitios libres, después de acabar el "+paciente);
+            
     }
     
 }
