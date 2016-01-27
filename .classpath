@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="DosProcesos/src"/>
+	<classpathentry kind="src" path="hilos/src"/>
+	<classpathentry kind="src" path="mayusculas/src/mayusculas"/>
+	<classpathentry kind="src" path="practica02/src"/>
+	<classpathentry kind="src" path="proceso/src"/>
+	<classpathentry kind="src" path="Procesos/src/procesos"/>
+	<classpathentry kind="src" path="Proyecto10/src"/>
+	<classpathentry kind="src" path="psp/src"/>
+	<classpathentry kind="src" path="Relevo/src"/>
+	<classpathentry kind="src" path="Semaforo/src"/>
+	<classpathentry kind="src" path="sumaHilos/src"/>
+	<classpathentry kind="lib" path="Procesos/dist/Procesos.jar"/>
+	<classpathentry kind="lib" path="Proyecto10/dist/Proyecto10.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="DosProcesos/build/classes"/>
+</classpath>
