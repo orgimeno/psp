@@ -6,13 +6,19 @@ import java.io.OutputStream;
 
 import java.net.InetSocketAddress; 
 
-import java.net.Socket; 
+import java.net.Socket;
+import java.util.*; 
 
 public class ClienteSocketStream{
 
 	public static void main(String[] args) {
 
+
 		try { 
+
+			System.out.println("Creando objeto de clase escaner"); 
+
+			Scanner tec = new Scanner(System.in);
 
 			System.out.println("Creando socket cliente"); 
 
@@ -28,15 +34,21 @@ public class ClienteSocketStream{
 
 			OutputStream os = clientSocket.getOutputStream(); 
 
-			System.out.println("Enviando mensaje"); 
+			System.out.println("Escribir mensaje"); 
 
-			String mensaje = "mensaje desde el cliente"; 
+			String mensaje = tec.nextLine(); 
 
-			os .write (mensaje.getBytes () ); 
+			os.write(mensaje.getBytes()); 
 
 			System.out.println("Mensaje enviado"); 
 
-			System .out.println("Cerrando el socket cliente"); 
+			byte[] mensajeRecibido = new byte[125]; 
+
+			is.read(mensajeRecibido);
+
+			System.out.println("Respuesta: " + new String(mensajeRecibido)); 
+
+			System.out.println("Cerrando el socket cliente"); 
 
 			clientSocket.close() ; 
 

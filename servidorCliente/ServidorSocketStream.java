@@ -36,11 +36,53 @@ public class ServidorSocketStream {
 
 			OutputStream os = newSocket .getOutputStream(); 
 
-			byte[] mensaje = new byte[25]; 
+			byte[] mensaje = new byte[125]; 
 
 			is.read(mensaje); 
 
-			System.out.println("Mensaje recibido: "+new String(mensaje)); 
+			String preguntaCliente = new String(mensaje);
+
+			for (int i=0;i<preguntaCliente.length();i++) {
+				if (preguntaCliente.charAt(i)=='?')
+					preguntaCliente=preguntaCliente.substring(0,i+1);
+			}
+
+			String respuesta = "No he entedido la pregunta";
+
+			switch(preguntaCliente.toLowerCase()){
+				case "¿cómo te llamas?":
+						respuesta = "Soy el ejercicio 2";
+					break;
+				case "cómo te llamas?":
+						respuesta = "Soy el ejercicio 2";
+					break;
+				case "como te llamas?":
+						respuesta = "Soy el ejercicio 2";
+					break;
+				case "¿como te llamas?":
+						respuesta = "Soy el ejercicio 2";
+					break;
+
+				case "¿cuántas líneas de código tienes?":
+						respuesta = "10000";
+					break;
+				case "cuántas líneas de código tienes?":
+						respuesta = "10000";
+					break; 
+
+				case "¿cuantas lineas de codigo tienes?":
+						respuesta = "10000";
+					break;
+				case "cuantas lineas de codigo tienes?":
+						respuesta = "10000";
+					break; 
+			}
+
+			System.out.println("Mensaje recibido: "+ preguntaCliente);
+
+			System.out.println(respuesta);  
+
+			os.write(respuesta.getBytes());
 
 			System.out.println("Cerrando el nuevo socket"); 
 
@@ -48,7 +90,7 @@ public class ServidorSocketStream {
 
 			System.out.println("Cerrando el socket servidor"); 
 
-			serverSocket .close();
+			serverSocket.close();
 			System.out.println("Terrninado") ; 
 
 		}catch (IOException e) { 
